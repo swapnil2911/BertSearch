@@ -8,7 +8,7 @@ This project was taken as a year long project under IE NITK 2020.
 ## Usage
 Unzip the bert model and move the extracted folder into bertserving folder
 
-**CAUTION**: If possible, assign high memory(more than `8GB`) to Docker's memory configuration because BERT container needs high memory.
+**CAUTION**: If possible, assign high memory(more than `5GB`) to Docker's memory configuration because BERT container needs high memory.
 
 In the root directory, run
 
