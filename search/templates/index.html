@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title> Search for technical doubts </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="https://hackr.io/assets/images/code-images/code-favicon-32x32.png"
+    sizes="32x32">
+  <link rel="icon" type="image/png" href="https://hackr.io/assets/images/code-images/code-favicon-16x16.png"
+    sizes="16x16">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="static/css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/animate.css">
+
+  <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="static/css/magnific-popup.css">
+
+  <link rel="stylesheet" href="static/css/aos.css">
+
+  <link rel="stylesheet" href="static/css/ionicons.min.css">
+
+  <link rel="stylesheet" href="static/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="static/css/jquery.timepicker.css">
+
+
+  <link rel="stylesheet" href="static/css/flaticon.css">
+  <link rel="stylesheet" href="static/css/icomoon.css">
+  <!-- <link rel="stylesheet" href="static/css/style.css"> -->
+  <link rel="stylesheet" href="static/css/style1.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <style>
+    ul.ui-autocomplete {
+      list-style: none;
+      list-style-type: none;
+      padding: 10px;
+      margin: 15px;
+    }
+
+    .ui-widget {
+      font-family: Verdana, Arial, sans-serif;
+      font-size: 30px;
+
+    }
+
+    .ui-state-active a:visited {
+      color: 000000;
+      /* any color you like */
+      background-color: #F0F8FF;
+
+    }
+
+    .ui-widget-content .ui-state-active {
+      color: 000000;
+      /* any color you like */
+      background-color: #F0F8FF;
+    }
+
+    .ui-widget-content {
+      border: 1px solid White;
+      color: #222222;
+      background-color: White;
+    }
+
+    .ui-widget {
+      font-family: Verdana, Arial, sans-serif;
+      font-size: 15px;
+    }
+
+    .ui-menu {
+      display: block;
+      float: left;
+      list-style: none outside none;
+      margin: 0;
+      padding: 2px;
+    }
+
+    .ui-autocomplete {
+      cursor: default;
+      position: absolute;
+    }
+
+    .ui-menu .ui-menu-item {
+      clear: left;
+      float: left;
+      margin: 5px;
+      padding: 0;
+      width: 100%;
+    }
+
+    .ui-menu .ui-menu-item a {
+      display: block;
+      padding: 3px 3px 3px 3px;
+      text-decoration: none;
+      cursor: pointer;
+      background-color: Green;
+    }
+
+    .ui-menu .ui-menu-item a:hover {
+      display: block;
+      padding: 3px 3px 3px 3px;
+      text-decoration: none;
+      color: blue;
+      cursor: pointer;
+      background-color: ButtonText;
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav>
+    <ul id="nav" class="nav">
+      <a href="/">Text Search</a>
+      <!-- <a href="/image_search">Image Search</a> -->
+      <a href="#About">About</a>
+      <a href="#Contact">Contact</a>
+    </ul>
+  </nav>
+  <div class="hero-wrap js-fullheight" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+        data-scrollax-parent="true">
+        <div class="col-xl-10 ftco-animate mb-5 pb-5" data-scrollax=" properties: { translateY: '70%' }">
+
+          <div class="header_parent">
+            <p class="line-1 anim-typewriter">Stack Overflow Search Engine</p>
+            <!-- <div class="sub_header">Search Engine</div> -->
+          </div>
+          <div class="ftco-search" style="color: turquoise;">
+            <div class="row">
+
+              <div class="col-md-12 tab-wrap">
+
+                <div class="tab-content p-4" id="v-pills-tabContent">
+
+                  <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
+                    aria-labelledby="v-pills-nextgen-tab">
+                    <form action="/return_searches" method="post" class="search-job" autocomplete="off">
+          
+                      <div class="wrapper">
+                        <!-- <div class="label">Submit your search</div> -->
+                        <div class="searchBar">
+                          <input class="searchQueryInput form-control" id="user_input" type="text" name="query"
+                            placeholder="Search" value="Enter Search Query" />
+                          <button id="submit" class="searchQuerySubmit" type="submit">
+                            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                              <path fill="#666666"
+                                d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                    <div id="result"></div>
+                  </div>
+                  <br>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script src="static/js/jquery.min.js"></script>
+
+  <script src="static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/jquery.easing.1.3.js"></script>
+  <script src="static/js/jquery.waypoints.min.js"></script>
+  <script src="static/js/jquery.stellar.min.js"></script>
+  <script src="static/js/owl.carousel.min.js"></script>
+  <script src="static/js/jquery.magnific-popup.min.js"></script>
+  <script src="static/js/aos.js"></script>
+  <script src="static/js/jquery.animateNumber.min.js"></script>
+  <script src="static/js/bootstrap-datepicker.js"></script>
+  <script src="static/js/jquery.timepicker.min.js"></script>
+  <script src="static/js/scrollax.min.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="static/js/google-map.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="static/js/main.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+
+    const $source = document.querySelector('#user_input');
+    const $result = document.querySelector('#result');
+
+    const typeHandler = function (e) {
+      //$result.innerHTML = e.target.value;
+      // console.log(e.target.value);
+
+      $.ajax({
+        url: "/pipe",
+        type: 'POST',
+        cache: false,
+        data: { 'data': e.target.value },
+        success: function (html) {
+          $result.innerHTML = ""
+          console.log(html)
+          //var data = html.aggregations.auto_complete.buckets
+          var data = html
+          //console.log(data)
+          var queries = []
+          for (x in html['hits']['hits']) {
+            queries.push(html.hits.hits[x]._source.question)
+          }
+
+          // $.each(data, (index, value) => {
+          //   _.push(value.key)
+          // });
+
+          console.log(queries)
+          for (i in queries) {
+            $result.innerHTML += i + "\n"
+          }
+          $result.innerHTML = ""
+          $("#user_input").autocomplete({
+            source: queries
+          });
+
+        }
+      });
+    }
+
+    $source.addEventListener('input', typeHandler) // register for oninput
+    $source.addEventListener('propertychange', typeHandler) // for IE8
+
+    function btn_submit() {
+      sessionStorage.setItem('title', $("#user_input").val())
+    }
+
+
+    $(document).ready(function () {
+
+      var data = sessionStorage.getItem('title')
+      $("#user_input").val(data);
+    });
+
+
+
+  </script>
+
+
+</body>
+
+</html>

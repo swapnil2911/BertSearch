@@ -1,0 +1,7 @@
+env/
+wsa_scraper/
+ElasticSearch_Test.ipynb
+universal-sentence-encoder_4.tar.gz
+Dockerfile
+bulk.json
+temp.json

@@ -1,0 +1,60 @@
+version: '3.7'
+services:
+  search:
+    restart: always
+    container_name: search
+    build: ./search
+    command: ["./wait-for-it.sh", "es0:9200", "-t", "250", "--", "sh", "./search.sh"]
+    ports:
+      - "8080:8080"
+    environment:
+      - INDEX_NAME=${INDEX_NAME}
+      - INJESTION_FILE=${INJESTION_FILE}
+    depends_on:
+      - es0
+      - autofill
+      - bertserving
+
+  bertserving:
+    build: ./bertserving
+    container_name: bertserving
+    ports:
+      - "5555:5555"
+      - "5556:5556"
+      - "8125:8125"
+      - "8888:8888"
+    command: ["./bert.sh"]
+    environment:
+      - CUDA_VISIBLE_DEVICES = ${CUDA_VISIBLE_DEVICES}
+    depends_on:
+      - es0
+  
+  autofill:
+    restart: always
+    container_name: autofill
+    build: ./search
+    command: ["./wait-for-it.sh", "es0:9200", "-t", "250", "--","sh", "./autofill.sh"]
+    environment:
+      - INDEX_NAME=${INDEX_NAME}
+    ports:
+      - "4040:4040"
+    depends_on:
+      - es0
+  
+  es0:
+    restart: always
+    container_name: es0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.3
+    environment:
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    tty: true
+    ports:
+      - 9200:9200
+
+volumes:
+  es-data:
+    driver: local
