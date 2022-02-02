@@ -21,11 +21,11 @@ services:
     ports:
       - "5555:5555"
       - "5556:5556"
-      - "8125:8125"
-      - "8888:8888"
-    command: ["./bert.sh"]
     environment:
       - CUDA_VISIBLE_DEVICES = ${CUDA_VISIBLE_DEVICES}
+      - MODEL_NAME = ${MODEL_NAME}
+    volumes:
+      - "./${MODEL_NAME}:/model"
     depends_on:
       - es0
   

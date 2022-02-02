@@ -4,3 +4,5 @@ RUN pip install --no-cache-dir bert-serving-server==1.9.8
 WORKDIR /bert
 COPY . /bert
 RUN chmod +x bert.sh
+
+CMD ["./bert.sh"]
