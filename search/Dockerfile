@@ -7,4 +7,5 @@ RUN pip install -r requirements.txt
 COPY . /app/
 RUN chmod +x wait-for-it.sh
 RUN chmod +x search.sh
-RUN chmod +x autofill.sh
+
+CMD ["./wait-for-it.sh", "es0:9200", "-t", "250", "--", "sh", "./search.sh"]

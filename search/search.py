@@ -4,10 +4,13 @@ import sys
 # import pytesseract
 # from PIL import Image
 import requests
-from flask import Flask,render_template, jsonify, request
+from flask import app,Flask,render_template, request
 from bert_serving.client import BertClient
 
 INDEX_NAME = os.environ['INDEX_NAME']
+
+app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 # Connecting to ElasticSearch
 es = Elasticsearch([{'host': 'es0', 'port': 9200}])
@@ -17,8 +20,8 @@ else:
     print('Could not connect to ES!')
     sys.exit()
 
-app = Flask(__name__)
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+bc = BertClient(ip='bertserving', output_fmt='list')
+print("connected to bc")
 
 #Home Page
 @app.route('/')
@@ -33,7 +36,6 @@ def index():
 #Search Results
 @app.route('/return_searches', methods=['POST'])
 def return_searches():
-    bc = BertClient(ip='bertserving',output_fmt='list')
     result_sup = []
     query = request.form.to_dict()['query']
 
@@ -78,15 +80,20 @@ def return_searches():
 
 
 #Autocomplete the search query 
-@app.route('/pipe', methods=["GET", "POST"])
+@app.route('/autocomplete', methods=["GET", "POST"])
 def pipe():
-    data = request.form.get("data")
-    payload = {}
-    headers= {}
-    url = "http://autofill:4040/autocomplete?query="+str(data)
-    print(url)
-    response = requests.request("GET", url, headers=headers, data = payload)
-    return response.json()
+    query = request.form.get("data")
+    autofill_query = {             
+        "query": {
+            "match": {
+                "question": {"query": "{}".format(query), "analyzer": "standard"}
+            }
+        }
+    }
+    response = es.search(index=INDEX_NAME,body=autofill_query)
+    return response
+
+# Autocomplete
 
 if __name__ == '__main__':
     # pytesseract.pytesseract.tesseract_cmd = r'D:\Pytesseract\tesseract'

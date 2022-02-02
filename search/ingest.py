@@ -25,7 +25,7 @@ def generate_actions():
     f = open(INJESTION_FILE)
     data = json.load(f)
     print(len(data))
-    for id in range(min(100,len(data))):
+    for id in range(min(1000,len(data))):
         print(id)
         record = {}
         
