@@ -43,8 +43,6 @@ Go to the Spiders Directory and run the following command
 scrapy crawl stackoverflow -o injest.json
 ```
 
-Alternatively the default injest.json file provided in the search folder can be used.
-
 move injest.json into the search folder and run the following command to injest data into elasticsearch
 
 ```
